@@ -70,7 +70,7 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:constraint_referenced_ids="btn_signup,btn_login"
-        app:flow_horizontalGap="30dp"
+        app:flow_horizontalGap="12dp"
         app:flow_maxElementsWrap="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
