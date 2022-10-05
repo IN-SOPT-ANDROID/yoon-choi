@@ -53,6 +53,10 @@ class SignInActivity : AppCompatActivity() {
                 intent.putExtra("id", id)
                 intent.putExtra("mbti", mbti)
                 startActivity(intent)
+            } else if (binding.edtInputId.text.toString()
+                    .isEmpty() && binding.edtPassword.text.toString().isEmpty()
+            ) {
+                Toast.makeText(this, "값이 입력되지 않았습니다..", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "회원가입이랑 정보가 다릅니다.", Toast.LENGTH_SHORT).show()
             }

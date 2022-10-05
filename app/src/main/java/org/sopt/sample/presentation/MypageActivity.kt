@@ -13,7 +13,7 @@ class MypageActivity : AppCompatActivity() {
         binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initText()
+        initText() 
     }
 
     private fun initText() {
