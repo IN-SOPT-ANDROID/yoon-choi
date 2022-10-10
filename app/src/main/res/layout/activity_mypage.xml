@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="@{mydata.name}"
+            android:text='@{"ID: "+mydata.name}'
             app:layout_constraintTop_toBottomOf="@id/circle_my_image" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="@{mydata.mbti}"
+            android:text='@{"MBTI: "+mydata.mbti}'
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

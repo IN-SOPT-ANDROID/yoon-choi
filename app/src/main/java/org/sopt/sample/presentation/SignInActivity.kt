@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.sample.databinding.ActivitySigninBinding
+import org.sopt.sample.util.SOPTSharedPreferences
 import org.sopt.sample.util.defaultSnackbar
 import org.sopt.sample.util.shortToast
 
@@ -18,7 +19,6 @@ class SignInActivity : AppCompatActivity() {
     private var id: String? = null
     private var password: String? = null
     private var mbti: String? = null
-//    val mydata: Mydata = Mydata(id!!, mbti!!)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySigninBinding.inflate(layoutInflater)
@@ -75,5 +75,15 @@ class SignInActivity : AppCompatActivity() {
                 shortToast("회원가입이랑 정보가 다릅니다.")
             }
         }
+    }
+
+    private fun AutoLogin() {
+        if (SOPTSharedPreferences.getAutoLogin()) {
+            shortToast("자동로그인 되었습니다.")
+        }
+    }
+
+    companion object {   //key값 전달을 위음
+
     }
 }
