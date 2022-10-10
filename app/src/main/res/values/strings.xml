@@ -13,5 +13,7 @@
     <!--    <string name="name">이름 : 최윤정</string>-->
     <string name="home_name_is">이름 : %1$s</string>
     <string name="home_mbti_is">MBTI : %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--    <string name="MY_MBTI">MBTI: ISFP</string>-->
 </resources>

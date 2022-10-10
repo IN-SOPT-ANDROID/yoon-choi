@@ -1,4 +1,4 @@
-package org.sopt.sample.presentation
+package org.sopt.sample.presentation.mypage
 
 import android.os.Bundle
 import android.util.Log
@@ -21,7 +21,6 @@ class MypageActivity : AppCompatActivity() {
     private fun initText() {
         val id = intent.getStringExtra("id")
         val mbti = intent.getStringExtra("mbti")
-        Log.d("ㄹㅇㅋㅋ", "initText: $id  $mbti")
         binding.mydata = Mydata(id!!, mbti!!)
     }
 }

@@ -1,4 +1,4 @@
-package org.sopt.sample.presentation
+package org.sopt.sample.presentation.login
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.sample.databinding.ActivitySigninBinding
+import org.sopt.sample.presentation.MainActivity
+import org.sopt.sample.presentation.mypage.MypageActivity
 import org.sopt.sample.util.SOPTSharedPreferences
 import org.sopt.sample.util.defaultSnackbar
 import org.sopt.sample.util.shortToast
@@ -62,9 +64,10 @@ class SignInActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             if (binding.edtInputId.text.toString() == id && binding.edtPassword.text.toString() == password) {
                 shortToast("로그인에 성공했습니다.")
-                val intent = Intent(this, MypageActivity::class.java)
-                intent.putExtra("id", id)
-                intent.putExtra("mbti", mbti)
+                val intent = Intent(this, MainActivity::class.java)
+                val mypageIntent = Intent(this, MypageActivity::class.java)
+                mypageIntent.putExtra("id", id)
+                mypageIntent.putExtra("mbti", mbti)
                 Log.d("signin", "clicklogin: $id  $mbti")
                 startActivity(intent)
             } else if (binding.edtInputId.text.toString()
