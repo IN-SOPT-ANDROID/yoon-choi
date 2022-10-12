@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
-        tools:listitem="@layout/item_list_home" />
+        tools:listitem="@layout/item_body_list_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

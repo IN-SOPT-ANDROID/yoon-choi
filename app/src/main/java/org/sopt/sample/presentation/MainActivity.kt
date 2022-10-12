@@ -12,7 +12,6 @@ import org.sopt.sample.presentation.main.search.SearchFragment
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    //        private var position = FIRST_FRAMGENT
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding.homeMenu.setOnItemSelectedListener { item ->
             changeFragment(
                 when (item.itemId) {
-                    R.id.menu_search -> {
-                        SearchFragment()
-                    }
+                    R.id.menu_search -> SearchFragment()
                     R.id.home_menu -> HomeFragment()
                     R.id.menu_setting -> GalleryFragment()
                     else -> HomeFragment()
@@ -37,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.homeMenu.selectedItemId = R.id.menu_home
     }
-
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
