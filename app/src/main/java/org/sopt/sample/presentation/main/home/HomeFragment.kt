@@ -14,6 +14,11 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding ?: error("binding이 초기화되지 않았슴다.")
     private val mockRepoList = listOf<RepoData>(
         RepoData(
+            image = null,
+            title = null,
+            description = null
+        ),
+        RepoData(
             image = R.drawable.nunu,
             title = "NuNu",
             description = "안드로이드 파트장"

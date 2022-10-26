@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     else -> HomeFragment()
                 }
             )
-            false
+            true    //바텀 클릭시 색 변환
         }
         binding.homeMenu.selectedItemId = R.id.menu_home
     }
