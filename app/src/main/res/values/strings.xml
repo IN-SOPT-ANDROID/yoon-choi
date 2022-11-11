@@ -15,5 +15,6 @@
     <string name="home_mbti_is">MBTI : %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="userList">사용자 정보</string>
     <!--    <string name="MY_MBTI">MBTI: ISFP</string>-->
 </resources>

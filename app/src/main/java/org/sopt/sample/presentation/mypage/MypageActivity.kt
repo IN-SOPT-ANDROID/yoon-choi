@@ -21,6 +21,6 @@ class MypageActivity : AppCompatActivity() {
     private fun initText() {
         val id = intent.getStringExtra("id")
         val mbti = intent.getStringExtra("mbti")
-        binding.mydata = Mydata(id!!, mbti!!)
+//        binding.mydata = Mydata(id!!, mbti!!)
     }
 }
