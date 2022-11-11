@@ -8,12 +8,19 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import org.sopt.sample.data.remote.ApiFactory
+import org.sopt.sample.data.remote.ServicePool
+import org.sopt.sample.data.remote.login.RequestLogin
+import org.sopt.sample.data.remote.login.ResponseLogin
 import org.sopt.sample.databinding.ActivitySigninBinding
 import org.sopt.sample.presentation.MainActivity
 import org.sopt.sample.presentation.mypage.MypageActivity
 import org.sopt.sample.util.SOPTSharedPreferences
 import org.sopt.sample.util.defaultSnackbar
 import org.sopt.sample.util.shortToast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySigninBinding
@@ -21,6 +28,7 @@ class SignInActivity : AppCompatActivity() {
     private var id: String? = null
     private var password: String? = null
     private var mbti: String? = null
+    private val loginService = ServicePool.authService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySigninBinding.inflate(layoutInflater)
@@ -60,33 +68,82 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    private fun loginService() {
+//        loginService.postLogin(
+//            RequestLogin(
+//                binding.edtInputId.text.toString(),
+//                binding.edtPassword.text.toString()
+//            )
+//        ).enqueue(object : Callback<ResponseLogin> {
+//            override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
+//                startActivity(MainActivity)
+//            }
+//
+//            override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+//                Toast.makeText(this@SignInActivity, "서버통신 error", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+    }
+
     private fun clickLogin() {
         binding.btnLogin.setOnClickListener {
-            if (binding.edtInputId.text.toString() == id && binding.edtPassword.text.toString() == password) {
-                shortToast("로그인에 성공했습니다.")
-                val intent = Intent(this, MainActivity::class.java)
-                val mypageIntent = Intent(this, MypageActivity::class.java)
-                mypageIntent.putExtra("id", id)
-                mypageIntent.putExtra("mbti", mbti)
-                Log.d("signin", "clicklogin: $id  $mbti")
-                startActivity(intent)
-            } else if (binding.edtInputId.text.toString()
-                    .isEmpty() && binding.edtPassword.text.toString().isEmpty()
-            ) {
-                shortToast("값이 입력되지 않았습니다.")
-            } else {
-                shortToast("회원가입이랑 정보가 다릅니다.")
-            }
+            shortToast("로그인 버튼 눌렀는디;")
+            val edtId = binding.edtInputId.text.toString()
+            val edtPw = binding.edtPassword.text.toString()
+//            if (edtId == id && edtPw == password) {
+//                shortToast("로그인에 성공했습니다.")
+//                val intent = Intent(this, MainActivity::class.java)
+//                goToMypage()
+//                startActivity(intent)
+//            } else if (edtId.isEmpty() && edtPw.isEmpty()
+//            ) {
+//                shortToast("값이 입력되지 않았습니다.")
+//            } else {
+//                shortToast("회원가입이랑 정보가 다릅니다.")
+//            }
+            loginService.postLogin(
+                RequestLogin(
+                    edtId,
+                    edtPw
+                )
+            ).enqueue(object : Callback<ResponseLogin> {
+                override fun onResponse(
+                    call: Call<ResponseLogin>,
+                    response: Response<ResponseLogin>
+                ) {
+                    if (response.isSuccessful) {
+                        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                        goToMypage()
+                        startActivity(intent)
+                        Log.d("signinActivity", "onResponse: ")
+                    }else{
+                        Log.d("signinActivity", "onSuccess에서 fail: ")
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+                    Log.d("signinActivity", "onFailure: ")
+                }
+            })
         }
     }
 
-    private fun AutoLogin() {
-        if (SOPTSharedPreferences.getAutoLogin()) {
-            shortToast("자동로그인 되었습니다.")
+    private fun goToMypage() {
+        val mypageIntent = Intent(this, MypageActivity::class.java)
+        mypageIntent.putExtra("id", id)
+        mypageIntent.putExtra("mbti", mbti)
+    }
+
+    private fun initClickEvent() {
+        binding.cbtnAutoLogin.setOnClickListener {
+            binding.cbtnAutoLogin.isChecked = !binding.cbtnAutoLogin.isChecked
+            SOPTSharedPreferences.setAutoLogin(this, binding.cbtnAutoLogin.isChecked)
         }
     }
 
-    companion object {   //key값 전달을 위음
-
+    companion object {   //key값 전달을 위한
+        const val ID = "id"
+        const val pw = "pw"
+        const val MBTI = "mbti"
     }
 }
