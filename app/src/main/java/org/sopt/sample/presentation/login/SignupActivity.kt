@@ -30,7 +30,7 @@ class SignupActivity : AppCompatActivity() {
     private fun clickSignUp() {
         with(binding) {
             btnSignup.setOnClickListener {
-                if (edtInputId.length() in 6..10 && edtInputPassword.length() in 9..11) {
+                if (!(edtInputId.text.isEmpty() && edtInputPassword.text.isEmpty())) {
                     initServer()
 
                 } else {
@@ -66,9 +66,6 @@ class SignupActivity : AppCompatActivity() {
                 response: Response<ResponseSignUp>
             ) {
                 if (response.isSuccessful) {
-//                    val intent = Intent(this@SignupActivity, MainActivity::class.java)
-//                    startActivity(intent)
-//                    Log.d("signupActivity", "onResponse: ")
                     passingIntent()
                 } else {
                     Log.d("signupActivity", "onSuccess에서 fail: $response ")

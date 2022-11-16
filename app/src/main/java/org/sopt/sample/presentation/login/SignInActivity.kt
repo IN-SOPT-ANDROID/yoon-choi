@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import org.sopt.sample.data.remote.ApiFactory
 import org.sopt.sample.data.remote.ServicePool
 import org.sopt.sample.data.remote.login.RequestLogin
 import org.sopt.sample.data.remote.login.ResponseLogin
@@ -115,13 +115,16 @@ class SignInActivity : AppCompatActivity() {
                         goToMypage()
                         startActivity(intent)
                         Log.d("signinActivity", "onResponse: ")
-                    }else{
+                        shortToast("로그인 성공")
+                    } else {
+                        shortToast("네트워크 미약 or 잘못된 입력 값")
                         Log.d("signinActivity", "onSuccess에서 fail: ")
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                     Log.d("signinActivity", "onFailure: ")
+
                 }
             })
         }
