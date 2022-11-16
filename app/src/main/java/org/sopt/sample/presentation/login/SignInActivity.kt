@@ -87,7 +87,6 @@ class SignInActivity : AppCompatActivity() {
 
     private fun clickLogin() {
         binding.btnLogin.setOnClickListener {
-            shortToast("로그인 버튼 눌렀는디;")
             val edtId = binding.edtInputId.text.toString()
             val edtPw = binding.edtPassword.text.toString()
 //            if (edtId == id && edtPw == password) {
