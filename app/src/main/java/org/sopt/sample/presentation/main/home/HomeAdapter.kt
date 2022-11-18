@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import org.sopt.sample.data.RepoData
 import org.sopt.sample.databinding.ItemBodyListHomeBinding
 import org.sopt.sample.databinding.ItemTitleHomeBinding
@@ -66,7 +67,9 @@ class HomeAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHold
         private val homeBodyBinding: ItemBodyListHomeBinding
     ) : RecyclerView.ViewHolder(homeBodyBinding.root) {
         fun onBind(data: RepoData) {
-            homeBodyBinding.repodata = data
+            homeBodyBinding.ivMyprofile.load(data.image)
+            homeBodyBinding.tvTitle.text = data.last_name
+            homeBodyBinding.tvDescription.text = data.description
         }
     }
 
