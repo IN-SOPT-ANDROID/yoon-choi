@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.sopt.sample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,15 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INSOPTAndroidPractice"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MypageActivity"
+            android:name=".presentation.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.SignupActivity"
+            android:name=".presentation.mypage.MypageActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.SignInActivity"
+            android:name=".presentation.login.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.login.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

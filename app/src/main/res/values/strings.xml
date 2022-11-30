@@ -3,7 +3,7 @@
     <string name="welcomesopt">Welcome to Sopt</string>
     <string name="id">ID</string>
     <string name="input_id">아이디를 입력하세요.</string>
-    <string name="password">비밀번호</string>
+    <string name="password">password</string>
     <string name="input_password">비밀번호를 입력하세요.</string>
     <string name="login">login</string>
     <string name="signup">SIGNUP</string>
@@ -13,5 +13,8 @@
     <!--    <string name="name">이름 : 최윤정</string>-->
     <string name="home_name_is">이름 : %1$s</string>
     <string name="home_mbti_is">MBTI : %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="userList">사용자 정보</string>
     <!--    <string name="MY_MBTI">MBTI: ISFP</string>-->
 </resources>

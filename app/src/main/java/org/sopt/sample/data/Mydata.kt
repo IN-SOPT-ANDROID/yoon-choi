@@ -1,6 +1,8 @@
 package org.sopt.sample.data
 
-data class mydata(
-    private var name: String,
-    private var mbti: String
+data class Mydata(
+//    var image:Int?,
+    var name: String,
+    var password:String,
+    var mbti: String
 )
